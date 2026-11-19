@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VieScoMsg — Generador Dinámico de Mensajes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+<body>
+
+    <!-- BARRA DE NAVEGACIÓN SUPERIOR -->
+    <header class="app-header">
+        <div class="container-max header-inner">
+            <div class="brand-box">
+                <div class="" aria-hidden="true">
+                    <svg
+                       width="60"
+                       height="60"
+                       viewBox="0 0 24 24"
+                       fill="none"
+                       stroke="currentColor"
+                       stroke-width="2"
+                       stroke-linecap="round"
+                       stroke-linejoin="round"
+                       class="lucide lucide-mail-pen preview-icon"
+                       version="1.1"
+                       id="svg257"
+
+                      <g
+                         id="g4569">
+                        <ellipse
+                           style="fill:#261445;fill-opacity:1;stroke:#ffffff;stroke-width:0.216;stroke-opacity:1;stroke-dasharray:none"
+                           id="path1045"
+                           cx="12.079194"
+                           cy="12.170924"
+                           rx="8.5460644"
+                           ry="8.4972038" />
+                        <ellipse
+                           style="fill:none;fill-opacity:1;stroke:#6c2123;stroke-width:1.98200009;stroke-dasharray:none;stroke-opacity:1"
+                           id="path1045-3"
+                           cx="12.079194"
+                           cy="12.170924"
+                           rx="9.9611788"
+                           ry="9.9042282" />
+                        <g
+                           id="g437"
+                           transform="matrix(0.48748169,0,0,0.48748169,6.1860965,6.4186385)"
+                           style="fill:none;stroke:#ffffff;stroke-opacity:1">
+                          <path
+                             d="m 15.363,17.634 a 2,2 0 0 0 -0.506,0.854 l -0.837,2.87 a 0.5,0.5 0 0 0 0.62,0.62 l 2.87,-0.837 a 2,2 0 0 0 0.854,-0.506 l 3.013,-3.009 a 2.1241488,2.1241488 0 1 0 -3.004,-3.004 z"
+                             id="path251"
+                             style="fill:none;stroke:#ffffff;stroke-opacity:1" />
+                          <path
+                             d="M 22,10.38 V 6 A 2,2 0 0 0 20,4 H 4 A 2,2 0 0 0 2,6 v 12 a 2,2 0 0 0 2,2 h 6.25"
+                             id="path253"
+                             style="fill:none;stroke:#ffffff;stroke-opacity:1" />
+                          <path
+                             d="m 22,7 -8.991,5.727 a 2,2 0 0 1 -2.009,0 L 2,7"
+                             id="path255"
+                             style="fill:none;stroke:#ffffff;stroke-opacity:1" />
+                        </g>
+                      </g>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="brand-title">VieScoMsg</h1>
+                    <p class="brand-subtitle hide-mobile">Generador de mensajes dinámicos</p>
+                </div>
+            </div>
+
+            <nav class="nav-actions" aria-label="Gestores de configuración">
+                <button id="btnOpenVarsManager" type="button" class="btn btn-secondary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line><line x1="1" y1="14" x2="7" y2="14"></line><line x1="9" y1="8" x2="15" y2="8"></line><line x1="17" y1="16" x2="23" y2="16"></line></svg>
+                    <span>Variables</span>
+                </button>
+                <button id="btnOpenCatsManager" type="button" class="btn btn-secondary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                    <span>Categorías</span>
+                </button>
+                <button id="btnOpenLibrary" type="button" class="btn btn-secondary">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    <span>Plantillas</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ÁREA DE TRABAJO PRINCIPAL (2 COLUMNAS) -->
+    <main class="container-max main-workspace">
+        <div class="workspace-grid">
+            
+            <!-- COLUMNA IZQUIERDA: Cuestionario y Selector de Tono -->
+            <div class="column-stack">
+                
+                <!-- TARJETA 1: VARIABLES DEL CUESTIONARIO -->
+                <section class="card" aria-labelledby="step1-heading">
+                    <div class="card-header">
+                        <div class="step-title-group">
+                            <span class="step-badge">1</span>
+                            <h2 id="step1-heading" class="card-title">Variables del Cuestionario</h2>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button id="btnQuickEditVars" type="button" class="link-action">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
+                                Configurar campos
+                            </button>
+                            <button id="btnClearForm" type="button" class="link-action link-muted">
+                                Limpiar campos
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Formulario dinámico cargado desde localStorage -->
+                    <div id="dynamicFormFieldsGrid" class="form-grid"></div>
+
+                    <!-- Variables temporales de un solo uso -->
+                    <div class="adhoc-section">
+                        <div class="flex items-center justify-between gap-2">
+                            <span style="font-size: 0.75rem; font-weight: 500; color: var(--text-muted);">Variables temporales adicionales (opcional)</span>
+                            <button id="btnAddCustomVar" type="button" class="link-action">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="16"></line><line x1="8" y1="12" x2="16" y2="12"></line></svg>
+                                Añadir variable temporal
+                            </button>
+                        </div>
+                        <div id="customVarsContainer"></div>
+                    </div>
+                </section>
+
+                <!-- TARJETA 2: TONO / TIPO DE RESPUESTA -->
+                <section class="card" aria-labelledby="step2-heading">
+                    <div class="card-header">
+                        <div class="step-title-group">
+                            <span class="step-badge">2</span>
+                            <h2 id="step2-heading" class="card-title">Tipo de Respuesta / Categorías</h2>
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <button id="btnQuickEditCats" type="button" class="link-action">
+                                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                                Editar categorías
+                            </button>
+                            <span id="categoryCountBadge" class="count-pill">4 plantillas</span>
+                        </div>
+                    </div>
+
+                    <div id="categorySelectorGrid" class="category-grid"></div>
+                </section>
+
+                <!-- BOTÓN PRINCIPAL DE GENERACIÓN -->
+                <button id="btnGenerate" type="button" class="btn btn-primary btn-lg w-full">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3m0 12v3M3 12h3m12 0h3M5.6 5.6l2.1 2.1m8.6 8.6l2.1 2.1M5.6 18.4l2.1-2.1m8.6-8.6l2.1-2.1"></path></svg>
+                    <span>Generar Mensaje Aleatorio</span>
+                </button>
+            </div>
+
+            <!-- COLUMNA DERECHA: MENSAJE GENERADO -->
+            <section class="card output-card" aria-labelledby="step3-heading">
+                <div class="card-header">
+                    <div class="step-title-group">
+                        <span class="step-badge">3</span>
+                        <h2 id="step3-heading" class="card-title">Mensaje Generado</h2>
+                        <select id="langSelector" class="langSelector" aria-label="Idioma del mensaje">
+                            <option value="es">Español (ES)</option>
+                            <option value="fr">Français (FR)</option>
+                            <option value="en">English (EN)</option>
+                        </select>
+                        <span id="langStatusLabel" style="font-size: 0.75rem; color: #64748b;"></span>
+                    </div>
+                    <span id="templateMetaBadge" class="meta-pill hidden">
+                        <span id="templateIndexLabel">Variación #1</span>
+                    </span>
+                </div>
+
+                <textarea id="outputTextarea" class="output-editor" placeholder="Rellena las variables de la izquierda, selecciona un tono de respuesta y pulsa «Generar Mensaje Aleatorio» para redactar tu texto aquí..."></textarea>
+
+                <!-- Aviso si quedan etiquetas {variable} sin completar -->
+                <div id="missingVarsWarning" class="warning-banner hidden" role="alert">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:1px;"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                    <div>
+                        <strong>Variables pendientes de rellenar:</strong> aún aparecen etiquetas entre llaves <code>{...}</code> en el texto. Completa esos campos en el formulario o edita el mensaje directamente.
+                    </div>
+                </div>
+
+                <div class="output-footer">
+                    <span id="charWordCounter" class="stats-text">0 palabras · 0 caracteres</span>
+                    <span class="stats-text">Puedes editar el texto libremente antes de copiar</span>
+                </div>
+
+                <div class="output-actions">
+                    <button id="btnVariation" type="button" class="btn btn-secondary flex-1">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 3 21 3 21 8"></polyline><line x1="4" y1="20" x2="21" y2="3"></line><polyline points="21 16 21 21 16 21"></polyline><line x1="15" y1="15" x2="21" y2="21"></line><line x1="4" y1="4" x2="9" y2="9"></line></svg>
+                        <span>Variación</span>
+                    </button>
+                    <button id="btnCopy" type="button" class="btn btn-secondary flex-1">
+                        <svg id="copyIcon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                        <span id="copyText">Copiar Mensaje</span>
+                    </button>
+                    <button id="btnInsertGmail" type="button" class="btn btn-dark flex-1">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                        <span>Insertar en Gmail</span>
+                    </button>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- ==========================================================================
+         MODAL 1: GESTOR DE VARIABLES DEL FORMULARIO
+         ========================================================================== -->
+    <div id="varsManagerModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="vars-modal-title">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <div class="modal-title-wrap">
+                    <div class="modal-icon-badge">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="21" x2="4" y2="14"></line><line x1="4" y1="10" x2="4" y2="3"></line><line x1="12" y1="21" x2="12" y2="12"></line><line x1="12" y1="8" x2="12" y2="3"></line><line x1="20" y1="21" x2="20" y2="16"></line><line x1="20" y1="12" x2="20" y2="3"></line></svg>
+                    </div>
+                    <div>
+                        <h3 id="vars-modal-title" class="modal-title">Gestor de Variables del Formulario</h3>
+                        <p class="modal-subtitle">Configura los campos del cuestionario y las etiquetas <code>{clave}</code> disponibles en tus plantillas.</p>
+                    </div>
+                </div>
+                <button id="btnCloseVarsModal" type="button" class="btn-icon" aria-label="Cerrar">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <!-- Formulario Añadir / Editar Variable -->
+                <div class="panel-box">
+                    <div class="flex items-center justify-between gap-2">
+                        <h4 id="varFormModeTitle" class="section-kicker">Añadir nueva variable al cuestionario</h4>
+                        <button id="btnResetVarsDefault" type="button" class="btn btn-sm btn-danger-ghost">Restaurar originales</button>
+                    </div>
+                    <div class="manager-fields-grid">
+                        <div class="md-col-3">
+                            <label style="display:block; font-size:0.72rem; font-weight:600; color:#475569; margin-bottom:0.25rem;">Clave (snake_case)</label>
+                            <div class="key-wrapper">
+                                <span>{</span>
+                                <input type="text" id="varInputKey" placeholder="telefono">
+                                <span>}</span>
+                            </div>
+                        </div>
+                        <div class="md-col-3">
+                            <label style="display:block; font-size:0.72rem; font-weight:600; color:#475569; margin-bottom:0.25rem;">Etiqueta visible</label>
+                            <input type="text" id="varInputLabel" class="input-control input-sm" placeholder="Ej. Teléfono de contacto">
+                        </div>
+                        <div class="md-col-4">
+                            <label style="display:block; font-size:0.72rem; font-weight:600; color:#475569; margin-bottom:0.25rem;">Placeholder (ejemplo)</label>
+                            <input type="text" id="varInputPlaceholder" class="input-control input-sm" placeholder="Ej. +34 600 000 000">
+                        </div>
+                        <div class="md-col-2">
+                            <label style="display:block; font-size:0.72rem; font-weight:600; color:#475569; margin-bottom:0.25rem;">Tipo</label>
+                            <select id="varInputType" class="select-control select-sm">
+                                <option value="text">Texto corto</option>
+                                <option value="textarea">Texto largo</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="flex justify-end gap-2">
+                        <button id="btnCancelEditVar" type="button" class="btn btn-sm btn-secondary hidden">Cancelar edición</button>
+                        <button id="btnSaveVarForm" type="button" class="btn btn-sm btn-primary">Añadir variable</button>
+                    </div>
+                </div>
+
+                <!-- Listado de Variables -->
+                <div>
+                    <div class="flex items-center justify-between mb-2">
+                        <h4 class="section-kicker">Variables configuradas</h4>
+                        <span id="varsCountLabel" class="count-pill">5 variables</span>
+                    </div>
+                    <div id="varsManagerList" class="flex flex-col gap-2"></div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <span style="font-size:0.75rem; color:var(--text-muted);" class="hide-mobile">Los cambios se guardan automáticamente en este navegador.</span>
+                <button id="btnDoneVarsModal" type="button" class="btn btn-dark">Listo</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         MODAL 2: GESTOR DE CATEGORÍAS
+         ========================================================================== -->
+    <div id="catsManagerModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="cats-modal-title">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <div class="modal-title-wrap">
+                    <div class="modal-icon-badge">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+                    </div>
+                    <div>
+                        <h3 id="cats-modal-title" class="modal-title">Gestor de Categorías / Tonos</h3>
+                        <p class="modal-subtitle">Crea, personaliza colores e iconos, reordena o elimina los tipos de respuesta.</p>
+                    </div>
+                </div>
+                <button id="btnCloseCatsModal" type="button" class="btn-icon" aria-label="Cerrar">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <!-- Formulario Añadir / Editar Categoría -->
+                <div class="panel-box">
+                    <h4 id="catFormModeTitle" class="section-kicker">Crear nueva categoría</h4>
+                    <div class="manager-fields-grid">
+                        <div class="md-col-4">
+                            <label style="display:block; font-size:0.72rem; font-weight:600; color:#475569; margin-bottom:0.25rem;">Nombre</label>
+                            <input type="text" id="catInputLabel" class="input-control input-sm" placeholder="Ej. Ventas / Prospección">
+                        </div>
+                        <div class="md-col-4">
+                            <label style="display:block; font-size:0.72rem; font-weight:600; color:#475569; margin-bottom:0.25rem;">Descripción breve</label>
+                            <input type="text" id="catInputDesc" class="input-control input-sm" placeholder="Ej. Primer contacto comercial">
+                        </div>
+                        <div class="md-col-2">
+                            <label style="display:block; font-size:0.72rem; font-weight:600; color:#475569; margin-bottom:0.25rem;">Icono</label>
+                            <select id="catInputIcon" class="select-control select-sm"></select>
+                        </div>
+                        <div class="md-col-2">
+                            <label style="display:block; font-size:0.72rem; font-weight:600; color:#475569; margin-bottom:0.25rem;">Color</label>
+                            <select id="catInputColor" class="select-control select-sm"></select>
+                        </div>
+                    </div>
+                    <div class="flex justify-end gap-2">
+                        <button id="btnCancelEditCat" type="button" class="btn btn-sm btn-secondary hidden">Cancelar edición</button>
+                        <button id="btnSaveCatForm" type="button" class="btn btn-sm btn-primary">Crear categoría</button>
+                    </div>
+                </div>
+
+                <!-- Diálogo de borrado seguro si la categoría contiene plantillas -->
+                <div id="catDeleteConfirmBox" class="warning-banner hidden" style="flex-direction:column; gap:0.75rem; margin-top:0;">
+                    <div>
+                        <strong id="catDeleteConfirmTitle" style="display:block; font-size:0.85rem;">Esta categoría contiene plantillas</strong>
+                        <span id="catDeleteConfirmText">Elige si deseas reasignar sus plantillas a otra categoría antes de eliminarla o borrarlas todas.</span>
+                    </div>
+                    <div class="flex flex-wrap items-center justify-end gap-2 w-full">
+                        <select id="reassignTargetSelect" class="select-control select-sm" style="width:auto; min-width:190px;"></select>
+                        <button id="btnConfirmReassignDelete" type="button" class="btn btn-sm btn-primary">Mover y eliminar</button>
+                        <button id="btnConfirmPurgeDelete" type="button" class="btn btn-sm" style="background:var(--rose-600); color:#fff;">Eliminar todo</button>
+                        <button id="btnCancelCatDelete" type="button" class="btn btn-sm btn-secondary">Cancelar</button>
+                    </div>
+                </div>
+
+                <!-- Listado de Categorías -->
+                <div>
+                    <div class="flex items-center justify-between mb-2">
+                        <h4 class="section-kicker">Categorías activas</h4>
+                        <span id="catsCountLabel" class="count-pill">5 categorías</span>
+                    </div>
+                    <div id="catsManagerList" class="flex flex-col gap-2"></div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <span style="font-size:0.75rem; color:var(--text-muted);" class="hide-mobile">Ordena las categorías con las flechas para cambiar su posición en el panel principal.</span>
+                <button id="btnDoneCatsModal" type="button" class="btn btn-dark">Listo</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ==========================================================================
+         MODAL 3: GESTOR DE PLANTILLAS Y RESPALDO JSON
+         ========================================================================== -->
+    <div id="libraryModal" class="modal-overlay hidden" role="dialog" aria-modal="true" aria-labelledby="tpl-modal-title">
+        <div class="modal-dialog">
+            <div class="modal-header">
+                <div class="modal-title-wrap">
+                    <div class="modal-icon-badge">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+                    </div>
+                    <div>
+                        <h3 id="tpl-modal-title" class="modal-title">Gestor de Plantillas</h3>
+                        <p class="modal-subtitle">Administra las variaciones de cada categoría y exporta o importa tu espacio de trabajo.</p>
+                    </div>
+                </div>
+                <button id="btnCloseModal" type="button" class="btn-icon" aria-label="Cerrar">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
+            </div>
+
+            <div class="modal-body">
+                <!-- Filtro de categoría + Respaldo JSON -->
+                <div class="flex items-center justify-between flex-wrap gap-3" style="padding-bottom:0.85rem; border-bottom:1px solid var(--border-color);">
+                    <div class="flex items-center gap-2">
+                        <label for="modalCategorySelect" style="font-size:0.82rem; font-weight:600; color:#334155;">Categoría:</label>
+                        <select id="modalCategorySelect" class="select-control select-sm" style="width:auto; min-width:220px; font-weight:600;"></select>
+                    </div>
+                    <div class="flex items-center flex-wrap gap-2">
+                        <button id="btnExportJson" type="button" class="btn btn-sm btn-secondary">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                            <span>Exportar JSON</span>
+                        </button>
+                        <label class="btn btn-sm btn-secondary" style="cursor:pointer;">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                            <span>Importar JSON</span>
+                            <input type="file" id="inputImportJson" accept=".json,application/json" class="hidden">
+                        </label>
+                        <button id="btnResetLibrary" type="button" class="btn btn-sm btn-danger-ghost">Restaurar todo</button>
+                    </div>
+                </div>
+
+                <!-- Editor de Nueva / Edición de Plantilla con Chips de Variables -->
+                <div class="panel-box">
+                    <div class="flex items-center justify-between flex-wrap gap-2">
+                        <h4 id="tplFormModeTitle" class="section-kicker">Nueva plantilla (haz clic en una variable para insertarla)</h4>
+                        <div id="quickTagButtons" class="flex flex-wrap gap-1.5"></div>
+                    </div>
+                    <textarea id="templateEditorTextarea" rows="3" class="textarea-control" style="background:#ffffff;" placeholder="Escribe aquí el mensaje usando las variables de arriba, por ejemplo: Hola {nombre}, te escribo sobre {detalle}..."></textarea>
+                    <div class="flex justify-end gap-2">
+                        <button id="btnCancelEditTemplate" type="button" class="btn btn-sm btn-secondary hidden">Cancelar edición</button>
+                        <button id="btnSaveTemplateForm" type="button" class="btn btn-sm btn-primary">Guardar plantilla</button>
+                    </div>
+                </div>
+
+                <!-- Lista de plantillas en la categoría seleccionada -->
+                <div>
+                    <h4 class="section-kicker mb-2">Plantillas en esta categoría</h4>
+                    <div id="modalTemplatesList" class="flex flex-col gap-2.5"></div>
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <span style="font-size:0.75rem; color:var(--text-muted);" class="hide-mobile">Las plantillas se eligen aleatoriamente sin repetir la anterior.</span>
+                <button id="btnDoneModal" type="button" class="btn btn-dark">Listo</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- NOTIFICACIÓN TOAST FLOTANTE -->
+    <div id="toastNotification" class="toast-banner" role="status" aria-live="polite">
+        <span id="toastIcon"></span>
+        <span id="toastMessage">Acción completada</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
