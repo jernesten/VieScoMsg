@@ -1200,5 +1200,41 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    const settingsMenuBtn = document.getElementById('btnOpenSettingsMenu');
+    const settingsDropdown = document.getElementById('settingsDropdownMenu');
+
+    function closeSettingsMenu() {
+        if (!settingsDropdown || !settingsMenuBtn) return;
+        settingsDropdown.classList.add('hidden');
+        settingsMenuBtn.setAttribute('aria-expanded', 'false');
+    }
+
+    settingsMenuBtn?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isHidden = settingsDropdown.classList.contains('hidden');
+        if (isHidden) {
+            settingsDropdown.classList.remove('hidden');
+            settingsMenuBtn.setAttribute('aria-expanded', 'true');
+        } else {
+            closeSettingsMenu();
+        }
+    });
+
+    // Cierra el menú al elegir una de las tres opciones y abre el modal correspondiente
+    ['btnOpenVarsManager', 'btnOpenCatsManager', 'btnOpenLibrary'].forEach((id) => {
+        document.getElementById(id)?.addEventListener('click', () => {
+            closeSettingsMenu();
+        });
+    });
+
+    // Cierra el menú si se hace clic fuera
+    document.addEventListener('click', (e) => {
+        if (settingsDropdown && !settingsDropdown.classList.contains('hidden')) {
+            if (!e.target.closest('.settings-menu-wrapper')) {
+                closeSettingsMenu();
+            }
+        }
+    });
+
 });
 
